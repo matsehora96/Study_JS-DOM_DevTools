@@ -26,9 +26,7 @@ let start = document.getElementById('start'),
     periodSelect = document.querySelector('[type="range"]'),
     incomeItem = document.querySelectorAll('.income-items'),
     periodAmount = document.querySelector('.period-amount'),
-    dataInputTypeText = document.querySelector('.data').querySelectorAll('[type="text"]'),
-    resultInputTypeText = document.querySelector('.result').querySelectorAll('[type="text"]'),
-    cloneAppData;
+    dataInputTypeText = document.querySelector('.data').querySelectorAll('[type="text"]');
 
 let isNumber = function(n){
     return !isNaN(parseFloat(n)) && isFinite(n);
@@ -48,7 +46,6 @@ let appData = {
     budgetMonth: 0,
     expensesMonth: 0,
     start: function(){
-        appData.reset();
 
         appData.budget = +salaryAmount.value;
         appData.getExpenses();
@@ -60,10 +57,6 @@ let appData = {
         appData.getBudget();
         appData.showResult();
         appData.closedInputAndHiddenStart();
-    },
-    reset: function () {
-        cloneAppData = Object.assign({}, appData);
-        console.log(cloneAppData);
     },
     showResult: function() {
         budgetMonthValue.value = this.budgetMonth;
@@ -184,19 +177,8 @@ let appData = {
         cancel.style.display = 'block';
         console.log(appData);
     },
-    openInputAndHiddenCancel: function() {
-        dataInputTypeText.forEach(function(item, i){
-            dataInputTypeText[i].removeAttribute('disabled');
-            dataInputTypeText[i].value = '';
-        });
-        resultInputTypeText.forEach(function(item, i){
-            resultInputTypeText[i].removeAttribute('disabled');
-            resultInputTypeText[i].value = '';
-        });
-        start.style.display = 'block';
-        cancel.style.display = 'none';
-        appData = cloneAppData;
-        console.log(appData);
+    reset: function() {
+        location.reload();
     },
     getCapitalLetter: function() {
         
@@ -211,7 +193,7 @@ salaryAmount.addEventListener('keyup', appData.checkSalaryAmount);
 
 start.addEventListener('click', appData.start);
 
-cancel.addEventListener('click', appData.openInputAndHiddenCancel);
+cancel.addEventListener('click', appData.reset);
 
 expensesPlus.addEventListener('click', appData.addExpensesBLock);
 
