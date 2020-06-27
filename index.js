@@ -1,11 +1,10 @@
 'use strict'
 
-let start = document.getElementById('start'),
+const start = document.getElementById('start'),
     cancel = document.getElementById('cancel'),
     btnPlus = document.getElementsByTagName('button'),
     incomePlus = btnPlus[0],
     expensesPlus = btnPlus[1],
-    depositCheck = document.querySelector('#deposit-check'),
     elementsIncomeItem = document.querySelectorAll('.additional_income-item'),
     budgetDayValue = document.getElementsByClassName('budget_day-value')[0],
     budgetMonthValue = document.getElementsByClassName('budget_month-value')[0],
@@ -16,20 +15,22 @@ let start = document.getElementById('start'),
     incomePeriodValue = document.getElementsByClassName('income_period-value')[0],
     targetMonthValue = document.getElementsByClassName('target_month-value')[0],
     salaryAmount = document.querySelector('.salary-amount'),
+    depositCheck = document.querySelector('#deposit-check'),
     incomeTitle = document.querySelector('.income-title'),
     expensesTitle = document.querySelector('.expenses-title'),
-    expensesItems = document.querySelectorAll('.expenses-items'),
     additionalExpensesItem = document.querySelector('.additional_expenses-item'),
     depositAmount = document.querySelector('.deposit-amount'),
     depositPercent = document.querySelector('.deposit-percent'),
     targetAmount = document.querySelector('.target-amount'),
     periodSelect = document.querySelector('[type="range"]'),
-    incomeItem = document.querySelectorAll('.income-items'),
     periodAmount = document.querySelector('.period-amount'),
-    dataInputTypeText = document.querySelector('.data').querySelectorAll('[type="text"]'),
     isNumber = function(n){
         return !isNaN(parseFloat(n)) && isFinite(n);
     };
+
+let expensesItems = document.querySelectorAll('.expenses-items'),
+    incomeItem = document.querySelectorAll('.income-items'),
+    dataInputTypeText = document.querySelector('.data').querySelectorAll('[type="text"]');
 
 const AppData = function() {
     this.income = {};
